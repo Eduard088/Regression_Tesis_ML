@@ -1,0 +1,146 @@
+/* Definición de la animación moveRight */
+@keyframes moveRight {
+  0% { transform: translateX(-100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+/* Definición de la animación fadeIn */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Estilo general del cuerpo del documento */
+body {
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  padding: 20px;
+  transition: background-color 0.5s ease;
+  scroll-behavior: smooth;
+  animation: moveRight 1.2s ease-out;
+  background-attachment: fixed;
+}
+
+/* Estilo para los encabezados */
+h1, h2, h3, h4, h5, h6 {
+  border-bottom: 2px solid lightblue;
+  padding-bottom: 5px;
+  transition: color 0.5s ease;
+  animation: moveRight 1.2s ease-out;
+  background-attachment: fixed;
+}
+
+h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
+  color: #4b7bec;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.75em;
+}
+
+/* Estilo para el código y los bloques de código */
+pre {
+  background-color: gray;
+  color: black;
+  border-radius: 5px;
+  padding: 15px;
+  font-family: "Courier New", Courier, monospace;
+  transition: background-color 0.5s ease;
+  animation: moveRight 1.2s ease-out;
+  background-attachment: fixed;
+}
+
+pre:hover {
+  background-color: lightblue;
+}
+
+code {
+  background-color: #4b7bec;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-family: "Courier New", Courier, monospace;
+  animation: moveRight 1.2s ease-out;
+  background-attachment: fixed;
+}
+
+/* Tablas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+  animation: moveRight 1.2s ease-out;
+  background-attachment: fixed;
+}
+
+table:hover {
+  transform: scale(1.02);
+}
+
+table th {
+  background-color: #4b7bec;
+  color: white;
+  padding: 10px;
+  text-align: left;
+  animation: moveRight 1.2s ease-out;
+  background-attachment: fixed;
+}
+
+table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  animation: moveRight 1.2s ease-out;
+  background-attachment: fixed;
+}
+
+/* Links */
+a {
+  color: #4b7bec;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  animation: moveRight 1.2s ease-out;
+  background-attachment: fixed;
+}
+
+a:hover {
+  color: #2d98da;
+  text-decoration: underline;
+}
+
+/* Clases dinámicas */
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+.highlight {
+  background-color: yellow;
+}
+
+/* Animación para mostrar texto al deslizar el mouse */
+.show-on-hover {
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
+.show-on-hover:hover {
+  opacity: 1;
+  animation: fadeIn 2s ease;
+}
+
+/* Añadir efectos de desvanecido */
+.fade-in {
+  opacity: 50;
+  animation: fadeIn 5s ease-in forwards;
+}

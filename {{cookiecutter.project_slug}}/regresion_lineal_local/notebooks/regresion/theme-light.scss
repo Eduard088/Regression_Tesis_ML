@@ -1,0 +1,29 @@
+/*-- scss:functions --*/
+/* Variables de colores */
+$body-bg: rgba(192, 179, 195, 0.1);  // Azul claro (lightblue) con 70% de opacidad
+$body-color: #000080;  // Color del texto azul marino
+$link-color: #1E90FF;  // Enlaces en azul dodger
+
+// Code blocks
+$code-block-bg-alpha: 0.9;
+
+/* Estilo general del cuerpo del documento */
+body {
+  background-color: $body-bg;  /* Aplicamos el fondo azul claro con transparencia */
+  color: whitesmoke;  /* Color del texto */
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  padding: 20px;
+  transition: background-color 0.5s ease;
+  scroll-behavior: smooth;
+}
+
+/* Estilo para los enlaces */
+a {
+  color: $link-color;  /* Color de los enlaces */
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: lighten($link-color, 15%); /* Cambia a un azul más claro al pasar el cursor */
+}

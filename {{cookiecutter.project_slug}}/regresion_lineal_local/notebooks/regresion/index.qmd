@@ -1,0 +1,29 @@
+---
+title: "Regresión Lineal"
+css: custom.css
+
+execute:
+  enabled: true
+  kernel: R
+---
+
+# Bienvenida a la Documentación de Regresión Lineal en Congresos Locales: {.fade-in}
+
+Este modelo implementa un algoritmo de aprendizaje automático supervisado, específicamente una regresión lineal, para predecir una variable dependiente continua basada en una o más variables independientes. La regresión lineal es una técnica estadística que busca encontrar la relación lineal entre las variables mediante el ajuste de una línea recta (o hiperplano en el caso de múltiples variables independientes) que minimiza la suma de los errores al cuadrado (residuos) entre las predicciones del modelo y los valores reales observados.
+
+En términos académicos, el modelo de regresión lineal puede ser representado por la ecuación:
+
+Y = β0 + β1X1 + β2X2 + ... + βnXn + ε
+
+ Donde:
+ - Y es la variable dependiente que se desea predecir.
+ - β0 es el término de intersección (intercepto) del modelo.
+ - β1, β2, ..., βn son los coeficientes de regresión que representan la magnitud y dirección de la relación entre cada variable independiente (X1, X2, ..., Xn) y la variable dependiente.
+ - X1, X2, ..., Xn son las variables independientes que se utilizan para hacer la predicción.
+ - ε es el término de error que captura la variabilidad en Y que no puede ser explicada por las variables independientes.
+
+ El objetivo del modelo es estimar los coeficientes β0, β1, ..., βn de manera que la función de costo, típicamente la suma de los errores al cuadrado (SSE - Sum of Squared Errors), sea minimizada. Esto se logra mediante técnicas de optimización como el método de mínimos cuadrados ordinarios (OLS - Ordinary Least Squares).
+
+ La evaluación del modelo se realiza mediante métricas como el coeficiente de determinación (R²), que indica la proporción de la variabilidad en la variable dependiente que puede ser explicada por las variables independientes, y el error cuadrático medio (MSE - Mean Squared Error), que mide la magnitud promedio de los errores de predicción.
+
+Este modelo es ampliamente utilizado en diversas disciplinas como economía, biología, ingeniería y ciencias sociales para entender y predecir relaciones entre variables, realizar inferencias causales y tomar decisiones informadas basadas en datos.

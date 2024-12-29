@@ -1,0 +1,78 @@
+---
+title: "Regresión Lineal Financiamiento Diputados"
+css: custom.css
+
+execute:
+  enabled: true
+  kernel: R
+---
+
+### Cargar Librería y Funciones:
+
+Cargamos las funciones necesarias desde el archivo `regresion.R`.
+
+```{r}
+source("/home/barea/regression/models/R/regresion.R")
+```	
+
+### Cargar Datos: {.fade-in}
+En esta sección, cargamos los datos desde un archivo Excel y los mostramos en una tabla interactiva.
+```{r}
+Elecciones_fed_1 <- read_excel('/home/barea/regression/{{cookiecutter.project_slug}}/regresion_lineal_local/regresion_congreso_local/data/Congresosfed.xlsx')
+reactable(Elecciones_fed_1)
+```
+
+## Elaboración de la Regresión Lineal Multiple: {.fade-in}
+Definimos la fórmula de la regresión lineal múltiple, especificando la variable dependiente y las variables independientes.
+```{r}
+formula3 <- Financiamiento ~ Curules + Año + Partido
+```
+
+### Ajuste del Modelo: {.fade-in}
+Ajustamos el modelo de regresión lineal múltiple utilizando los datos y la fórmula definida anteriormente.
+```{r}
+regresion_financong <- ajustar_modelos(Elecciones_fed_1, formula3)
+```
+
+### R Cuadrada del Modelo: {.fade-in}
+Calculamos y mostramos el valor de R cuadrada del modelo, que indica el porcentaje de variabilidad de la variable dependiente explicado por las variables independientes.
+```{r}
+obtener_r_cuadrado(regresion_financong)
+```
+
+### Coeficientes del Modelo: {.fade-in}
+Obtenemos y mostramos los coeficientes del modelo, que representan la relación entre cada variable independiente y la variable dependiente.
+```{r}
+obtener_coeficientes(regresion_financong, coef_index = 2)
+```
+
+### Resumen del Modelo: {.fade-in}
+Mostramos un resumen del modelo, que incluye información detallada sobre los coeficientes, errores estándar, valores t y p.
+```{r}
+resumir_modelos(regresion_financong)
+```
+
+### Coeficientes en Formato Tidy: {.fade-in}
+Convertimos los coeficientes del modelo a un formato tidy para facilitar su manipulación y visualización.
+```{r}
+coeficientes_tidy(regresion_financong)
+```
+
+## Visualización del Modelo: {.fade-in}
+Obtenemos los resultados del modelo y los mostramos en una tabla interactiva.
+```{r}
+resultados3 <- obtener_resultados(regresion_financong)
+reactable(resultados3)
+```
+
+### Gráfico Real vs Predicciones: {.fade-in}
+Creamos un gráfico que compara los valores reales con las predicciones del modelo, diferenciando por la variable "Sexo".
+```{r}
+plot_real_vs_pred(resultados3, "Financiamiento", "Predicciones", "Sexo")
+```
+
+### Densidad Real vs Predicciones: {.fade-in}
+Creamos un gráfico de densidad que compara la distribución de los valores reales con las predicciones del modelo, diferenciando por la variable "Sexo".
+```{r}
+plot_density_real_vs_pred(resultados3, "Financiamiento", "Predicciones", "Sexo")
+```

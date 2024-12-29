@@ -1,0 +1,98 @@
+---
+title: "Regresión Lineal Financiamiento Congresos Locales"
+css: custom.css
+
+execute:
+  enabled: true
+  kernel: R
+---
+
+### Cargar Librería y Funciones: {.fade-in}
+
+Cargamos las funciones necesarias desde el archivo `regresion.R`.
+
+```{r}
+source("/home/barea/regression/models/R/regresion.R")
+```
+
+### Cargar Datos: {.fade-in}
+
+Leemos los datos de un archivo Excel que contiene la información de las elecciones y los visualizamos en una tabla interactiva.
+
+```{r}
+Elecciones_fin <- read_excel('/home/barea/regression/{{cookiecutter.project_slug}}/regresion_lineal_local/regresion_congreso_local/data/Elecciones.xlsx')
+reactable(Elecciones_fin)
+```
+
+## Elaboración de la Regresión Lineal Multiple: {.fade-in}
+
+Definimos la fórmula para la regresión lineal múltiple, donde `financiamiento` es la variable dependiente y las demás son las variables independientes.
+
+```{r}
+formula1 <- financiamiento ~ Curules + PARTICIPACION + ID_ESTADO + Año + Partido
+```
+
+### Ajuste del Modelo: {.fade-in}
+
+Ajustamos el modelo de regresión lineal múltiple utilizando la fórmula definida y los datos cargados.
+
+```{r}
+regresion_financ <- ajustar_modelos(Elecciones_fin, formula1)
+```
+
+### R Cuadrada del Modelo: {.fade-in}
+
+Obtenemos el valor de R cuadrada del modelo, que indica el porcentaje de variabilidad de la variable dependiente explicada por las variables independientes.
+
+```{r}
+obtener_r_cuadrado(regresion_financ)
+```
+
+### Coeficientes del Modelo: {.fade-in}
+
+Obtenemos los coeficientes del modelo, que representan la relación entre cada variable independiente y la variable dependiente.
+
+```{r}
+obtener_coeficientes(regresion_financ, coef_index = 2)
+```
+
+### Resumen del Modelo: {.fade-in}
+
+Generamos un resumen del modelo que incluye estadísticas importantes como los coeficientes, errores estándar, valores t y p.
+
+```{r}
+resumir_modelos(regresion_financ)
+```
+
+### Coeficientes en Formato Tidy: {.fade-in}
+
+Obtenemos los coeficientes del modelo en un formato ordenado y fácil de interpretar.
+
+```{r}
+coeficientes_tidy(regresion_financ)
+```
+
+## Visualización del Modelo: {.fade-in}
+
+Obtenemos los resultados del modelo y los visualizamos en una tabla interactiva.
+
+```{r}
+resultados1 <- obtener_resultados(regresion_financ)
+reactable(resultados1)
+```
+
+### Gráfico Real vs Predicciones: {.fade-in}
+
+Generamos un gráfico que compara los valores reales de `financiamiento` con las predicciones del modelo, diferenciados por `Sexo`.
+
+```{r}
+plot_real_vs_pred(resultados1, "financiamiento", "Predicciones", "Sexo")
+```
+
+### Densidad Real vs Predicciones: {.fade-in}
+
+Generamos un gráfico de densidad que compara la distribución de los valores reales de `financiamiento` con las predicciones del modelo, diferenciados por `Sexo`.
+
+```{r}
+plot_density_real_vs_pred(resultados1, "financiamiento", "Predicciones", "Sexo")
+```

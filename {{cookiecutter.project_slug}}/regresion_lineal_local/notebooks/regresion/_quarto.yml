@@ -1,0 +1,42 @@
+project:
+  type: book
+  output-dir: docs 
+
+book:
+  title: "Regresión Lineal"
+  author: "Eduardo Barea"
+  date: "12/23/2024"
+  chapters:
+    - index.qmd
+    - linear_regression_conglocal.qmd
+    - linear_regression_financ.qmd
+    - linear_regression_congfed.qmd
+    - linear_regression_financong.qmd
+    - linear_regression_sendado.qmd
+
+bibliography: references.bib
+
+sidebar:
+  style: docked
+  background: dark
+
+format:
+  html:
+    theme:
+      light: [flatly, theme-light.scss]
+      dark: [darkly, theme-dark.scss]
+    code-fold: true
+    code-summary: "Mostrar el Código"
+
+comments:
+  hypothesis: true
+
+highlight-style: vim-dark
+
+website:
+  navbar:
+    background: primary
+    search: true
+    left:
+      - text: "Home"
+        href: index.qmd

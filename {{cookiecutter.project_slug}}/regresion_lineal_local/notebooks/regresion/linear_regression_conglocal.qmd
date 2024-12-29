@@ -1,0 +1,116 @@
+---
+title: "Regresión Lineal en los Congresos Locales 2015-2023"
+css: custom.css
+
+execute:
+  enabled: true
+  kernel: R
+---
+
+### Instalación de las Dependencias: {.fade-in}
+
+Para proceder con la instalación de las dependencias necesarias para la ejecución del análisis de regresión lineal múltiple, se debe utilizar el paquete `devtools`. Este paquete permite instalar paquetes de R directamente desde directorios locales, GitHub, entre otros. En este caso, se debe sustituir la ruta proporcionada por la ruta actual en su sistema de archivos.
+
+## Instalar Dependencias: {.show-on-hover}
+A continuación se intalan las dependencias indispensables para ejecutar el modelo. 
+```{r}
+# devtools::install("/home/barea/regression/models")
+# sustituir esto por tu ruta actual, por ejemplo: devtools::install("/home/user/models").
+```
+## Cargar la Librería: {.fade-in}
+
+Una vez instaladas las dependencias, es imperativo cargar la librería `models`, la cual contiene las funciones y métodos necesarios para llevar a cabo el análisis de regresión lineal múltiple. La función `library()` se utiliza para cargar paquetes en el entorno de trabajo de R.
+
+```{r}
+library(models)
+```
+
+### Cargar las Funciones de la Librería: {.fade-in}
+
+Además de cargar la librería, es necesario cargar funciones específicas desde un archivo R externo. En este caso, se utiliza la función `source()` para ejecutar el archivo `regresion.R`, el cual contiene definiciones de funciones que serán utilizadas posteriormente en el análisis.
+
+```{r}
+source("/home/barea/regression/models/R/regresion.R")
+```
+
+### Cargar los Datos: {.fade-in}
+
+Para realizar el análisis, se deben cargar los datos que contienen la información relevante sobre las elecciones. Utilizamos la función `read_excel()` para leer un archivo Excel que contiene los datos de las elecciones. Posteriormente, se visualizan los datos en una tabla interactiva utilizando la función `reactable()`, lo cual facilita la inspección y verificación de los datos cargados.
+
+```{r}
+Elecciones <- read_excel('/home/barea/regression/{{cookiecutter.project_slug}}/regresion_lineal_local/regresion_congreso_local/data/Elecciones.xlsx')
+reactable(Elecciones)
+```
+
+## Elaboración de la Regresión Lineal Multiple: {.fade-in}
+
+La regresión lineal múltiple es una técnica estadística que permite modelar la relación entre una variable dependiente y múltiples variables independientes. En esta sección, se define la fórmula del modelo de regresión lineal múltiple. La variable dependiente es `Votos`, mientras que las variables independientes son `Curules`, `PARTICIPACION`, `ID_ESTADO`, `Presidencia`, `Año` y `Partido`.
+
+```{r}
+formula <- Votos ~ Curules + PARTICIPACION + ID_ESTADO + Presidencia + Año + Partido
+```
+
+### Ajuste del Modelo: {.fade-in}
+
+Una vez definida la fórmula, se procede a ajustar el modelo de regresión lineal múltiple utilizando la función `ajustar_modelos()`. Esta función toma como argumentos los datos cargados y la fórmula definida, y devuelve un objeto que representa el modelo ajustado.
+
+```{r}
+regresion_congresoloc <- ajustar_modelos(Elecciones, formula)
+```
+
+### R Cuadrada del Modelo: {.fade-in}
+
+El coeficiente de determinación, conocido como R cuadrada, es una medida estadística que indica la proporción de la varianza de la variable dependiente que es explicada por las variables independientes en el modelo. Se utiliza la función `obtener_r_cuadrado()` para calcular y obtener este valor para el modelo ajustado.
+
+```{r}
+obtener_r_cuadrado(regresion_congresoloc)
+```
+
+### Coeficientes del Modelo: {.fade-in}
+
+Los coeficientes del modelo de regresión lineal múltiple representan la magnitud y dirección de la relación entre cada variable independiente y la variable dependiente. Utilizamos la función `obtener_coeficientes()` para extraer y visualizar estos coeficientes. El argumento `coef_index` se utiliza para especificar el índice del coeficiente que se desea obtener.
+
+```{r}
+obtener_coeficientes(regresion_congresoloc, coef_index = 2)
+```
+
+### Resumen del Modelo: {.fade-in}
+
+El resumen del modelo proporciona una visión detallada de las estadísticas del modelo ajustado, incluyendo los coeficientes, errores estándar, valores t y p, entre otros. La función `resumir_modelos()` se utiliza para generar y visualizar este resumen.
+
+```{r}
+resumir_modelos(regresion_congresoloc)
+```
+
+### Coeficientes en Formato Tidy: {.fade-in}
+
+Para facilitar la interpretación y manipulación de los coeficientes del modelo, se pueden obtener en un formato ordenado y estructurado utilizando la función `coeficientes_tidy()`. Este formato es especialmente útil para la visualización y análisis posterior de los resultados.
+
+```{r}
+coeficientes_tidy(regresion_congresoloc)
+```
+
+## Visualización del Modelo: {.fade-in}
+
+La visualización de los resultados del modelo es una parte crucial del análisis, ya que permite interpretar y comunicar los hallazgos de manera efectiva. En esta sección, se obtienen los resultados del modelo utilizando la función `obtener_resultados()` y se visualizan en una tabla interactiva con `reactable()`.
+
+```{r}
+resultados_conloc <- obtener_resultados(regresion_congresoloc)
+reactable(resultados_conloc)
+```
+
+### Gráfico Real vs Predicciones: {.fade-in}
+
+Para evaluar el desempeño del modelo, se genera un gráfico que compara los valores reales de `Votos` con las predicciones del modelo. La función `plot_real_vs_pred()` se utiliza para crear este gráfico, diferenciando los datos por la variable `Sexo`.
+
+```{r}
+plot_real_vs_pred(resultados_conloc, "Votos", "Predicciones", "Sexo")
+```
+
+### Densidad Real vs Predicciones: {.fade-in}
+
+Adicionalmente, se genera un gráfico de densidad que compara la distribución de los valores reales de `Votos` con las predicciones del modelo. La función `plot_density_real_vs_pred()` se utiliza para crear este gráfico, también diferenciando los datos por la variable `Sexo`.
+
+```{r}
+plot_density_real_vs_pred(resultados_conloc, "Votos", "Predicciones", "Sexo")
+```
