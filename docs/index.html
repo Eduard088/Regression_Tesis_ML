@@ -79,6 +79,7 @@ ul.task-list li input[type="checkbox"] {
 </script>
 
 
+<link rel="stylesheet" href="custom.css">
 </head>
 
 <body class="nav-sidebar floating">
@@ -90,7 +91,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Inicio</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Regresión Lineal</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -121,7 +122,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Inicio</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Regresión Lineal</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -164,7 +165,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#bienvenidos-a-la-regresión" id="toc-bienvenidos-a-la-regresión" class="nav-link active" data-scroll-target="#bienvenidos-a-la-regresión"><span class="header-section-number">1</span> Bienvenidos a la Regresión</a></li>
+  <li><a href="#bienvenida-a-la-documentación-de-regresión-lineal-en-congresos-locales" id="toc-bienvenida-a-la-documentación-de-regresión-lineal-en-congresos-locales" class="nav-link active" data-scroll-target="#bienvenida-a-la-documentación-de-regresión-lineal-en-congresos-locales"><span class="header-section-number">1</span> Bienvenida a la Documentación de Regresión Lineal en Congresos Locales:</a></li>
   </ul>
 </nav>
     </div>
@@ -202,9 +203,15 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="bienvenidos-a-la-regresión" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Bienvenidos a la Regresión</h1>
-<p>Este es el libro sobre análisis de regresión para congresos locales.</p>
+<section id="bienvenida-a-la-documentación-de-regresión-lineal-en-congresos-locales" class="level1 fade-in" data-number="1">
+<h1 class="fade-in" data-number="1"><span class="header-section-number">1</span> Bienvenida a la Documentación de Regresión Lineal en Congresos Locales:</h1>
+<p>Este modelo implementa un algoritmo de aprendizaje automático supervisado, específicamente una regresión lineal, para predecir una variable dependiente continua basada en una o más variables independientes. La regresión lineal es una técnica estadística que busca encontrar la relación lineal entre las variables mediante el ajuste de una línea recta (o hiperplano en el caso de múltiples variables independientes) que minimiza la suma de los errores al cuadrado (residuos) entre las predicciones del modelo y los valores reales observados.</p>
+<p>En términos académicos, el modelo de regresión lineal puede ser representado por la ecuación:</p>
+<p>Y = β0 + β1X1 + β2X2 + … + βnXn + ε</p>
+<p>Donde: - Y es la variable dependiente que se desea predecir. - β0 es el término de intersección (intercepto) del modelo. - β1, β2, …, βn son los coeficientes de regresión que representan la magnitud y dirección de la relación entre cada variable independiente (X1, X2, …, Xn) y la variable dependiente. - X1, X2, …, Xn son las variables independientes que se utilizan para hacer la predicción. - ε es el término de error que captura la variabilidad en Y que no puede ser explicada por las variables independientes.</p>
+<p>El objetivo del modelo es estimar los coeficientes β0, β1, …, βn de manera que la función de costo, típicamente la suma de los errores al cuadrado (SSE - Sum of Squared Errors), sea minimizada. Esto se logra mediante técnicas de optimización como el método de mínimos cuadrados ordinarios (OLS - Ordinary Least Squares).</p>
+<p>La evaluación del modelo se realiza mediante métricas como el coeficiente de determinación (R²), que indica la proporción de la variabilidad en la variable dependiente que puede ser explicada por las variables independientes, y el error cuadrático medio (MSE - Mean Squared Error), que mide la magnitud promedio de los errores de predicción.</p>
+<p>Este modelo es ampliamente utilizado en diversas disciplinas como economía, biología, ingeniería y ciencias sociales para entender y predecir relaciones entre variables, realizar inferencias causales y tomar decisiones informadas basadas en datos.</p>
 
 
 </section>
